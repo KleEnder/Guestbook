@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="main">
+        <title>Country Guesser</title>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/assets/css/style.css">
+    </head>
+
+    <body>
+        <p>GuestBook</p>
+        <form action="/vnosi" method="post">
+            <label for="name">Name</label>
+            <br>
+            <br>
+            <input type="text" name="ime" placeholder="Stranger" id="name">
+            <br>
+            <br>
+            <label for="surname">Surname</label>
+            <br>
+            <br>
+            <input type="text" name="priimek" placeholder="Stranger" id="surname">
+            <br>
+            <br>
+            <label for="email">Email</label>
+            <br>
+            <br>
+            <input type="text" name="email" placeholder="Email" id="email">
+            <br>
+            <br>
+            <label for="message">Message</label>
+            <br>
+            <br>
+            <input type="text" name="sporocilo" placeholder="Enter your long message ;)" id="message" required>
+            <br>
+            <br>
+            <label for="date">Date</label>
+            <br>
+            <br>
+            <input type="datetime" name="atum" placeholder="Date" id="date" value="{{placement.date|date:'Y-m-d'}}">
+            <br>
+            <br>
+            <button type="submit">New message</button>
+        </form>
+    </body>
+</html>

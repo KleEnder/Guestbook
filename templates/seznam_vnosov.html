@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vnosi</title>
+</head>
+<body>
+    <h2>Seznam vnosov</h2>
+    {% for guestbook in guests %}
+        <p>{{ guestbook.name }}</p>
+        <p>{{ guestbook.surname }}</p>
+        <p>{{ guestbook.email }}</p>
+        <p>{{ guestbook.message }}</p>
+        <p>{{ guestbook.date }}</p>
+    {% endfor %}
+</body>
+</html>
+
