@@ -4,9 +4,8 @@ import jinja2
 import webapp2
 from models import Guestbook
 
-
 template_dir = os.path.join(os.path.dirname(__file__), "templates")
-jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir), autoescape=False)
+jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir), autoescape=True)
 
 
 class BaseHandler(webapp2.RequestHandler):
