@@ -8,7 +8,7 @@
     <h2>Seznam vnosov</h2>
     {% for guestbook in guests %}
         <p>
-            <a href="/posamezen_vnos/{{ guestbook.key.id() }}">
+            <a href="/vnos/{{ guestbook.key.id() }}">
                 {{  guestbook.key.id() }}, {{ guestbook.name }}, {{ guestbook.surname }}, {{ guestbook.email }},
                 {{ guestbook.message }}, {{ guestbook.date }}
             </a>

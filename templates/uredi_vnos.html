@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vnosi</title>
+</head>
+<p>
+    <h2>Uredi vnos</h2>
+    <form action="/vnos/{{ guest.key.id() }}/uredi" method="post">
+        <label for="name">Change name:</label>
+        <input name="change_name" value="{{guest.name}}" id="name">
+        <br>
+        <br>
+        <label for="surname">Surname:</label>
+        <input name="change_surname" value="{{guest.surname}}" id="surname">
+        <br>
+        <br>
+        <label for="email">Email:</label>
+        <input name="change_email" value="{{guest.email}}" id="email">
+        <br>
+        <br>
+        <label for="message">Message:</label>
+        <input name="change_message" value="{{guest.message}}" id="message">
+        <br>
+        <br>
+        <button type="submit">Confirm Change</button>
+    </form>
+</body>
+</html>

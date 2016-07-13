@@ -59,11 +59,31 @@ class PosamezenVnosHandler(BaseHandler):
         params = { "guest": guest }
         return self.render_template("posamezen_vnos.html", params=params)
 
+class UrediVnosHandler(BaseHandler):
+    def get(self, guestbook_id):
+        guest = Guestbook.get_by_id(int(guestbook_id))
+        params = { "guest": guest }
+        return self.render_template("uredi_vnos.html", params=params)
+
+    def post(self, guestbook_id):
+        ime = self.request.get("change_name")
+        priimek = self.request.get("change_surname")
+        email = self.request.get("change_email")
+        sporocilo = self.request.get("change_message")
+        guest = Guestbook.get_by_id(int(guestbook_id))
+        #guest.Guestbook = Guestbook(name=ime, surname=priimek, email=email, message=sporocilo)
+        guest.name = ime
+        guest.surname = priimek
+        guest.email = email
+        guest.message = sporocilo
+        guest.put()
+        return self.redirect_to("seznam-vnosov")
 
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
     webapp2.Route('/vnosi', VnosHandler),
-    webapp2.Route('/seznam_vnosov', SeznamVnosovHandler),
-    webapp2.Route('/posamezen_vnos/<guestbook_id:\\d+>', PosamezenVnosHandler),
+    webapp2.Route('/seznam_vnosov', SeznamVnosovHandler, name="seznam-vnosov"),
+    webapp2.Route('/vnos/<guestbook_id:\\d+>', PosamezenVnosHandler),
+    webapp2.Route('/vnos/<guestbook_id:\\d+>/uredi', UrediVnosHandler),
 ], debug=True)
 
