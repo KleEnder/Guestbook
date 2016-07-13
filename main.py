@@ -53,10 +53,17 @@ class SeznamVnosovHandler(BaseHandler):
 
         return self.render_template("seznam_vnosov.html", params=guestsbooks)
 
+class PosamezenVnosHandler(BaseHandler):
+    def get(self, guestbook_id):
+        guest = Guestbook.get_by_id(int(guestbook_id))
+        params = { "guest": guest }
+        return self.render_template("posamezen_vnos.html", params=params)
+
+
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
     webapp2.Route('/vnosi', VnosHandler),
-    webapp2.Route('/seznam_vnosov', SeznamVnosovHandler)
+    webapp2.Route('/seznam_vnosov', SeznamVnosovHandler),
+    webapp2.Route('/posamezen_vnos/<guestbook_id:\\d+>', PosamezenVnosHandler),
 ], debug=True)
-
 
