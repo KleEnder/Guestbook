@@ -47,7 +47,7 @@ class VnosHandler(BaseHandler):
 
 class SeznamVnosovHandler(BaseHandler):
     def get(self):
-        guests = Guestbook.query().fetch()
+        guests = Guestbook.query(Guestbook.deleted == False).fetch()
 
         guestsbooks = { "guests": guests }
 
@@ -79,11 +79,24 @@ class UrediVnosHandler(BaseHandler):
         guest.put()
         return self.redirect_to("seznam-vnosov")
 
+class IzbrisiVnosHandler(BaseHandler):
+    def get(self, guestbook_id):
+        guest = Guestbook.get_by_id(int(guestbook_id))
+        params = { "guest": guest }
+        return self.render_template("izbrisi_vnos.html", params=params)
+
+    def post(self, guestbook_id):
+        guest = Guestbook.get_by_id(int(guestbook_id))
+        guest.deleted = True
+        guest.put()
+        return self.redirect_to("seznam-vnosov")
+
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
     webapp2.Route('/vnosi', VnosHandler),
     webapp2.Route('/seznam_vnosov', SeznamVnosovHandler, name="seznam-vnosov"),
     webapp2.Route('/vnos/<guestbook_id:\\d+>', PosamezenVnosHandler),
     webapp2.Route('/vnos/<guestbook_id:\\d+>/uredi', UrediVnosHandler),
+    webapp2.Route('/vnos/<guestbook_id:\\d+>/izbrisi', IzbrisiVnosHandler),
 ], debug=True)
 

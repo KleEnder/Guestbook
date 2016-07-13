@@ -6,4 +6,5 @@ class Guestbook(ndb.Model):
     email = ndb.StringProperty()
     message = ndb.TextProperty()
     date = ndb.DateTimeProperty()
+    deleted = ndb.BooleanProperty(default=False)
 

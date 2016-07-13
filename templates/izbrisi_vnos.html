@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Izbrisi vnos</title>
+</head>
+<body>
+    <h1>Do you want to delete the guest</h1>
+    <form action="/vnos/{{ guest.key.id() }}/izbrisi" method="post">
+        <button type="submit">Yes, delete the guest</button>
+    </form>
+</body>
+</html>
